@@ -1,0 +1,19 @@
+Algoritmo de tiempo constante
+Algoritmo de ciclo simple
+Algoritmo de ciclos anidados
+Algoritmo con condicional
+Algoritmo de ciclo repeat
+Algoritmo de búsqueda
+Algoritmo de ordenamiento
+Algoritmo de búsqueda lineal
+Algoritmo de triple ciclo
+Algoritmo logarítmico
+Algoritmo de ciclos dependientes
+Algoritmo de programación dinámica 1D
+Algoritmo de programación dinámica 2D
+Algoritmo de memoización
+Algoritmo for con log interno
+Algoritmo que sume 3 numeros
+Algoritmo que calcule el factorial de un número
+
+
