@@ -105,7 +105,7 @@ def _post(url, headers, data, retries=3):
         return resp
     return resp
 
-def _build_payload(system_prompt: str, user_text: str, max_tokens=1024, stop_sequences=None, temperature=0.1, api_version='v1beta'):
+def _build_payload(system_prompt: str, user_text: str, max_tokens=8192, stop_sequences=None, temperature=0.1, api_version='v1beta'):
     """
     Construye payload. Si system_prompt es muy grande (>30KB), 
     lo divide entre systemInstruction y el primer mensaje user.
@@ -216,7 +216,7 @@ end"""
             data = _build_payload(
                 SYSTEM_PROMPT,
                 user_prompt,
-                max_tokens=512,
+                max_tokens=8192,
                 stop_sequences=None,
                 temperature=0.0,
                 api_version=api_version
@@ -276,7 +276,7 @@ Código:
 
 Devuelve SOLO begin...end válido."""
                     
-                    data_fix = _build_payload(SYSTEM_PROMPT, prompt_fix, max_tokens=256, stop_sequences=None, temperature=0.0, api_version=api_version)
+                    data_fix = _build_payload(SYSTEM_PROMPT, prompt_fix, max_tokens=8192, stop_sequences=None, temperature=0.0, api_version=api_version)
                     if api_version == 'v1beta':
                         data_fix["safetySettings"] = data["safetySettings"]
                     
@@ -349,7 +349,6 @@ def obtener_analisis_llm(api_key, pseudocodigo):
 Analiza el siguiente algoritmo y devuelve:
 1) Razonamiento breve
 2) Complejidad: Peor Caso (O), Mejor Caso (Ω) y Caso Promedio (Θ).
-
 [PSEUDOCÓDIGO]
 ```plaintext
 {pseudocodigo}
@@ -367,7 +366,7 @@ Analiza el siguiente algoritmo y devuelve:
             data = _build_payload(
                 SYSTEM_PROMPT,
                 user_prompt,
-                max_tokens=768,
+                max_tokens=8192,
                 stop_sequences=["```", "FIN_RESPUESTA"],
                 temperature=0.1,
                 api_version=api_version
